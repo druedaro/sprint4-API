@@ -4,11 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./src/styles/twStyles.css" rel="stylesheet">
-    <title>API</title>
+    <meta name="author" content="David Rueda Rosas">
+    <meta name="description" content="Sprint 4 - API & TypeScript activities">
+    <title>Sprint 4 - API</title>
 </head>
 <body>
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+    <div class="custom-background shape-1">
+        <div class="container">
+            <div class="weather-section">
+                <div class="location">
+                    <strong>Barcelona</strong>
+                </div>
+                <div class="weather-info">
+                    <div id="weatherDescription"></div>
+                    <div id="weatherIcon"></div>
+                    <div id="weatherTemp"></div>
+                    <div id="weatherHumidity"></div>
+                </div>
+            </div>
+
+            <div class="joke-section">
+                <div class="joke-container">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Ready for your joke?</h4>
+                            <p class="card-text" id="jokesDiv"></p>
+                            <div id="ratingButtons">
+                                <button class="btn btn-bad" type="button" data-score="1"></button>
+                                <button class="btn btn-good" type="button" data-score="2"></button>
+                                <button class="btn btn-very-good" type="button" data-score="3"></button>
+                            </div>
+                            <button class="btn btn-primary" id="submitButton">Next Joke</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
 </body>
 </html>

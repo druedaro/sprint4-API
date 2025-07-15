@@ -1,0 +1,24 @@
+{
+  "name": "sprint4-api",
+  "version": "1.0.0",
+  "description": "This repository contains the completed project for Sprint 4 of the IT Academy Frontend course, focused on **TypeScript** and working with **REST APIs**.",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/druedaro/sprint4-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/druedaro/sprint4-API/issues"
+  },
+  "homepage": "https://github.com/druedaro/sprint4-API#readme",
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}

@@ -5,6 +5,12 @@ const weatherIcon = document.getElementById('weatherIcon')!;
 const weatherTemp = document.getElementById('weatherTemp')!;
 const weatherHumidity = document.getElementById('weatherHumidity')!;
 
+const jokesDiv = document.getElementById('jokeDiv')!;
+const jokeContainer = document.querySelector('custom-background') as HTMLDivElement;
+const submitButton = document.getElementById('submitButton') as HTMLButtonElement;
+const ratingButtons = document.querySelectorAll('#ratingButtons button');
+ 
+
 
 async function loadWeather (): Promise <void> {
   try {
@@ -19,5 +25,29 @@ async function loadWeather (): Promise <void> {
     console.error('Error loading weather:', error);
   }
 }
+
+
+async function fetchRandomJoke(): Promise<string> {
+  try {
+    if (Math.round(Math.random())) {
+      const res = await fetch('https://icanhazdadjoke.com/', { headers: { 'Accept': 'application/json' } }); 
+      return (await res.json()).joke;
+    } else { 
+      const res = await fetch ('https://api.chucknorris.io/jokes/random');
+      return (await res.json()).value;
+    }
+  } catch (error) {
+    console.error ('Error fetching joke:', error);
+    return 'Error loading random joke, sorry';
+  }
+}
+
+
+
+
+
+
+
+
 
 loadWeather();

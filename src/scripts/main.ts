@@ -9,7 +9,18 @@ const jokesDiv = document.getElementById('jokeDiv')!;
 const jokeContainer = document.querySelector('custom-background') as HTMLDivElement;
 const submitButton = document.getElementById('submitButton') as HTMLButtonElement;
 const ratingButtons = document.querySelectorAll('#ratingButtons button');
- 
+
+interface JokeReport {
+  joke: string;
+  score: number;
+  date: string;
+}
+
+let currentJoke: string = '';
+let selectedScore: number | null = null;
+let reportJokes: JokeReport[] = [];
+
+
 
 
 async function loadWeather (): Promise <void> {
@@ -42,6 +53,40 @@ async function fetchRandomJoke(): Promise<string> {
   }
 }
 
+async function loadJoke(): Promise<void> {
+  currentJoke = await fetchRandomJoke();
+  jokesDiv.textContent = currentJoke;
+  console.log('New joke:', currentJoke);
+
+  selectedScore = null;
+  ratingButtons.forEach(btn => btn.classList.remove('btn-selected'));
+  
+}
+
+
+ratingButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const score = parseInt(button.getAttribute('data-score')!);
+    if (selectedScore === score) {
+      selectedScore = null;
+      button.classList.remove('btn-selected');
+    } else {
+      ratingButtons.forEach(btn => btn.classList.remove('btn-selected'));
+      selectedScore = score;
+      button.classList.add('btn-selected');
+    }
+  });
+});
+
+submitButton.addEventListener('click', () => {
+    const finalScore = selectedScore !== null ? selectedScore : 0;
+    reportJokes.push({ joke: currentJoke, score: finalScore, date: new Date().toISOString() });
+    console.log('Jokes report:', reportJokes);
+
+  loadJoke();
+});
+
+
 
 
 
@@ -51,3 +96,4 @@ async function fetchRandomJoke(): Promise<string> {
 
 
 loadWeather();
+loadJoke();

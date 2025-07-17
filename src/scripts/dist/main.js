@@ -13,12 +13,20 @@ const weatherIcon = document.getElementById('weatherIcon');
 const weatherTemp = document.getElementById('weatherTemp');
 const weatherHumidity = document.getElementById('weatherHumidity');
 const jokesDiv = document.getElementById('jokeDiv');
-const jokeContainer = document.querySelector('custom-background');
+const jokeContainer = document.querySelector('.custom-background');
 const submitButton = document.getElementById('submitButton');
 const ratingButtons = document.querySelectorAll('#ratingButtons button');
 let currentJoke = '';
 let selectedScore = null;
 let reportJokes = [];
+function changeJokeShape() {
+    const shapes = ['shape-1', 'shape-2', 'shape-3', 'shape-4', 'shape-5', 'shape-6'];
+    const currentShape = shapes.find(shape => jokeContainer.classList.contains(shape));
+    const availableShapes = shapes.filter(shape => shape != currentShape);
+    const newShape = availableShapes[Math.floor(Math.random() * availableShapes.length)];
+    shapes.forEach(shape => jokeContainer.classList.remove(shape));
+    jokeContainer.classList.add(newShape);
+}
 function loadWeather() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -59,6 +67,7 @@ function loadJoke() {
         console.log('New joke:', currentJoke);
         selectedScore = null;
         ratingButtons.forEach(btn => btn.classList.remove('btn-selected'));
+        changeJokeShape();
     });
 }
 ratingButtons.forEach(button => {

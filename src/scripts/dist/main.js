@@ -33,7 +33,7 @@ function loadWeather() {
             const response = yield fetch(`https://api.openweathermap.org/data/2.5/weather?q=Barcelona&units=metric&appid=96cf2de381520089b251bc30cc3baf52`);
             const data = yield response.json();
             weatherDescription.textContent = data.weather[0].description.toUpperCase();
-            weatherIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${data.weather[0].icon}.png">`;
+            weatherIcon.innerHTML = `<img  alt="weather-icon" src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png">`;
             weatherTemp.textContent = `${data.main.temp} °C`;
             weatherHumidity.textContent = `${data.main.humidity} %`;
         }

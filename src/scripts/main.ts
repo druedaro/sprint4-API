@@ -39,7 +39,7 @@ async function loadWeather (): Promise <void> {
     const data = await response.json();
 
     weatherDescription.textContent = data.weather[0].description.toUpperCase();
-    weatherIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${data.weather[0].icon}.png">`;
+    weatherIcon.innerHTML = `<img  alt="weather-icon" src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png">`;
     weatherTemp.textContent = `${data.main.temp} °C`;
     weatherHumidity.textContent = `${data.main.humidity} %`;
   } catch (error) {

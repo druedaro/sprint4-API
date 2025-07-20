@@ -1,6 +1,5 @@
 "use strict"
 
-"use strict";
 
 import { loadWeather } from './api/weatherAPI.js';
 import { fetchRandomJoke } from './api/jokeAPI.js';

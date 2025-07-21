@@ -7,7 +7,7 @@ const weatherHumidity = document.getElementById('weatherHumidity')!;
 
 export async function loadWeather (): Promise<void> {
   try {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=Barcelona&units=metric&appid=96cf2de381520089b251bc30cc3baf52`);
+    const response = await fetch('/api/weather'); 
     const data = await response.json();
 
     weatherDescription.textContent = data.weather[0].description.toUpperCase();

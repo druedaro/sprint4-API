@@ -13,12 +13,19 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/druedaro/sprint4-API/issues"
   },
   "homepage": "https://github.com/druedaro/sprint4-API#readme",
   "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node-fetch": "^2.6.12",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "node-fetch": "^3.3.2"
   }
 }

@@ -15,7 +15,7 @@ const weatherHumidity = document.getElementById('weatherHumidity');
 export function loadWeather() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const response = yield fetch(`https://api.openweathermap.org/data/2.5/weather?q=Barcelona&units=metric&appid=96cf2de381520089b251bc30cc3baf52`);
+            const response = yield fetch('/api/weather');
             const data = yield response.json();
             weatherDescription.textContent = data.weather[0].description.toUpperCase();
             weatherIcon.innerHTML = `<img alt="weather-icon" src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png">`;

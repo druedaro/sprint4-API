@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/druedaro/sprint4-API#readme",
   "devDependencies": {
+    "@types/body-parser": "^1.19.6",
     "@types/express": "^5.0.3",
     "@types/node-fetch": "^2.6.12",
     "typescript": "^5.8.3"

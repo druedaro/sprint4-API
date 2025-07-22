@@ -1,6 +1,12 @@
 "use strict";
 export const ratingButtons = document.querySelectorAll('#ratingButtons button');
 export let selectedScore = null;
+export function setSelectedScore(score) {
+    selectedScore = score;
+}
+export function getSelectedScore() {
+    return selectedScore;
+}
 ratingButtons.forEach(button => {
     button.addEventListener('click', () => {
         const score = parseInt(button.getAttribute('data-score'));

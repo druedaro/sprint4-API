@@ -12,7 +12,7 @@ import { loadWeather } from './api/weatherAPI.js';
 import { fetchRandomJoke } from './api/jokeAPI.js';
 import { changeJokeShape } from './components/jokeShapes.js';
 import { JokeReport } from './types/types.js';
-import { selectedScore } from './components/jokeRating.js';
+import { getSelectedScore } from './components/jokeRating.js';
 import { showJoke, resetRatingUI } from './components/jokeUI.js';
 const submitButton = document.getElementById('submitButton');
 let currentJoke = '';
@@ -27,7 +27,7 @@ function loadJoke() {
     });
 }
 submitButton.addEventListener('click', () => {
-    const finalScore = selectedScore !== null ? selectedScore : 0;
+    const finalScore = getSelectedScore() !== null ? getSelectedScore() : 0;
     reportJokes.push(new JokeReport(currentJoke, finalScore, new Date().toISOString()));
     console.log('Jokes report:', reportJokes);
     loadJoke();

@@ -1,6 +1,6 @@
 "use strict"
 
-import { ratingButtons } from './jokeRating.js';
+import { ratingButtons, setSelectedScore  } from './jokeRating.js';
 
 const jokesDiv = document.getElementById('jokeDiv')!;
 
@@ -10,4 +10,6 @@ export function showJoke(joke: string): void {
 
 export function resetRatingUI(): void {
   ratingButtons.forEach(btn => btn.classList.remove('btn-selected'));
+
+setSelectedScore(null);
 }

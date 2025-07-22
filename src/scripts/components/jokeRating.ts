@@ -1,7 +1,17 @@
 "use strict"
 
 export const ratingButtons = document.querySelectorAll('#ratingButtons button');
+
 export let selectedScore: number | null = null;
+
+export function setSelectedScore(score: number | null): void {
+  selectedScore = score;
+}
+
+export function getSelectedScore(): number | null {
+  return selectedScore;
+}
+
 
 ratingButtons.forEach(button => {
   button.addEventListener('click', () => {

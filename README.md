@@ -48,6 +48,9 @@ Users can rate each joke from **1 to 3**, adding an interactive touch to the app
 
 - Postman
 
+- Node.js + Express
+
+- Vercel functions
 
 ## ⚙️ How to Run the Project
 
@@ -73,5 +76,9 @@ npm install
 ```
 npx tsc main.ts
 ```
+
+### To deploy or run the backend locally:
+```
+node api/server.js
+```
 Finally, open index.html in your browser.
-If you prefer, you can use a local server like live-server or http-server to preview the app.

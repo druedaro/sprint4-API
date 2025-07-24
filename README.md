@@ -72,9 +72,24 @@ cd Sprint-4
 npm install
 ```
 
+### Create your own .env file
+The project requires a .env file in the root directory to work properly.
+Create a file named .env with the following structure (example):
+```
+API_URL=http://localhost:3000
+# Other variables you might use, for example:
+# WEATHER_API_KEY=your_api_key_here
+```
+Note: Do not commit this file to Git, it is already included in .gitignore.
+
 ### Compile TypeScript to JavaScript (locally)
 ```
 npx tsc main.ts
+```
+
+### Run tests with Jest:
+```
+npm test
 ```
 
 ### To deploy or run the backend locally:

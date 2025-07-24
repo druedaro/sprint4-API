@@ -8,15 +8,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const weatherDescription = document.getElementById('weatherDescription');
-const weatherIcon = document.getElementById('weatherIcon');
-const weatherTemp = document.getElementById('weatherTemp');
-const weatherHumidity = document.getElementById('weatherHumidity');
 export function loadWeather() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const response = yield fetch('/api/weather');
             const data = yield response.json();
+            const weatherDescription = document.getElementById('weatherDescription');
+            const weatherIcon = document.getElementById('weatherIcon');
+            const weatherTemp = document.getElementById('weatherTemp');
+            const weatherHumidity = document.getElementById('weatherHumidity');
             weatherDescription.textContent = data.weather[0].description.toUpperCase();
             weatherIcon.innerHTML = `<img alt="weather-icon" src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png">`;
             weatherTemp.textContent = `${data.main.temp} °C`;

@@ -3,7 +3,6 @@ import { loadWeather } from '../api/weatherAPI';
 
 describe('loadWeather', () => {
   beforeEach(() => {
-    // Simulamos el DOM necesario
     document.body.innerHTML = `
       <div id="weatherDescription"></div>
       <div id="weatherIcon"></div>
@@ -13,7 +12,6 @@ describe('loadWeather', () => {
   });
 
   it('update the DOM with the weather data', async () => {
-    // Mock de fetch
     global.fetch = jest.fn(() =>
       Promise.resolve({
         json: () => Promise.resolve({

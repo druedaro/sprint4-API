@@ -1,7 +1,7 @@
 "use strict";
 import { ratingButtons, setSelectedScore } from './jokeRating.js';
-const jokesDiv = document.getElementById('jokeDiv');
 export function showJoke(joke) {
+    const jokesDiv = document.getElementById('jokeDiv');
     jokesDiv.textContent = joke;
 }
 export function resetRatingUI() {

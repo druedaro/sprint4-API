@@ -25,8 +25,14 @@ export function getDadJoke() {
 }
 export function getChuckNorrisJoke() {
     return __awaiter(this, void 0, void 0, function* () {
-        const url = jokeEndpoints.chuckNorris;
-        return apiClient(url);
+        try {
+            const url = jokeEndpoints.chuckNorris;
+            return yield apiClient(url);
+        }
+        catch (error) {
+            console.error('Error al obtener chiste Chuck Norris:', error);
+            return { id: 'error', joke: 'No se pudo cargar la broma, prueba otra vez.' };
+        }
     });
 }
 export function getRandomJoke() {

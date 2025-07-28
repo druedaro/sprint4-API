@@ -21,9 +21,15 @@ export async function getDadJoke(): Promise<Joke> {
 }
 
 export async function getChuckNorrisJoke(): Promise<Joke> {
-  const url = jokeEndpoints.chuckNorris;
-  return apiClient<Joke>(url);
+  try {
+    const url = jokeEndpoints.chuckNorris;
+    return await apiClient<Joke>(url);
+  } catch (error) {
+    console.error('Error al obtener chiste Chuck Norris:', error);
+    return { id: 'error', joke: 'No se pudo cargar la broma, prueba otra vez.' };
+  }
 }
+
 
 export async function getRandomJoke(): Promise<Joke> {
   const random = Math.random();

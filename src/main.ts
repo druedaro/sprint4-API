@@ -35,17 +35,21 @@ async function loadNewJoke() {
     changeBackgroundShape();         
   } catch (error) {
     console.error('Error al obtener chiste:', error);
+    renderJoke({ id: 'error', joke: 'Error al cargar la broma. Inténtalo de nuevo.' });
   }
 }
+
 
 function setupEventListeners() {
   const nextJokeBtn = document.getElementById('submit-button');
   if (nextJokeBtn) {
-    nextJokeBtn.addEventListener('click', () => {
+    nextJokeBtn.addEventListener('click', async () => {
       if (currentJoke && currentScore !== null) {
         scoreJoke(currentJoke.joke, currentScore);
       }
-      loadNewJoke();
+      nextJokeBtn.setAttribute('disabled', 'true');
+      await loadNewJoke();
+      nextJokeBtn.removeAttribute('disabled');
     });
   }
 
@@ -54,6 +58,7 @@ function setupEventListeners() {
     updateScoreUI(currentScore);
   });
 }
+
 
 async function init() {
   await loadWeather();

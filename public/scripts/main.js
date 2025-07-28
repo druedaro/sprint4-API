@@ -42,18 +42,21 @@ function loadNewJoke() {
         }
         catch (error) {
             console.error('Error al obtener chiste:', error);
+            renderJoke({ id: 'error', joke: 'Error al cargar la broma. Inténtalo de nuevo.' });
         }
     });
 }
 function setupEventListeners() {
     const nextJokeBtn = document.getElementById('submit-button');
     if (nextJokeBtn) {
-        nextJokeBtn.addEventListener('click', () => {
+        nextJokeBtn.addEventListener('click', () => __awaiter(this, void 0, void 0, function* () {
             if (currentJoke && currentScore !== null) {
                 scoreJoke(currentJoke.joke, currentScore);
             }
-            loadNewJoke();
-        });
+            nextJokeBtn.setAttribute('disabled', 'true');
+            yield loadNewJoke();
+            nextJokeBtn.removeAttribute('disabled');
+        }));
     }
     attachScoreListeners((score) => {
         currentScore = score;

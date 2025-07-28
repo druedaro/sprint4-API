@@ -8,21 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-export function fetchRandomJoke() {
+export function apiClient(url, options) {
     return __awaiter(this, void 0, void 0, function* () {
-        try {
-            if (Math.round(Math.random())) {
-                const res = yield fetch('https://icanhazdadjoke.com/', { headers: { 'Accept': 'application/json' } });
-                return (yield res.json()).joke;
-            }
-            else {
-                const res = yield fetch('https://api.chucknorris.io/jokes/random');
-                return (yield res.json()).value;
-            }
+        const response = yield fetch(url, options);
+        if (!response.ok) {
+            throw new Error(`Error ${response.status}: ${response.statusText}`);
         }
-        catch (error) {
-            console.error('Error fetching joke:', error);
-            return 'Error loading random joke, sorry';
-        }
+        return yield response.json();
     });
 }

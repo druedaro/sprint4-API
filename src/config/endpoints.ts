@@ -5,4 +5,4 @@ export const jokeEndpoints = {
   chuckNorris: 'https://api.chucknorris.io/jokes/random',
 };
 
-export const weatherApiLocalEndpoint = '/api/get-weather';
+export const weatherApiLocalEndpoint = '/api/getWeather.ts';

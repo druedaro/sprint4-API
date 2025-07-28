@@ -1,7 +1,7 @@
 "use strict"
 
-import { apiClient } from '../api-service/apiClient';
-import { jokeEndpoints } from '../config/endpoints';
+import { apiClient } from '../api-service/apiClient.js';
+import { jokeEndpoints } from '../config/endpoints.js';
 
 export interface Joke {
   id: string;

@@ -1,6 +1,6 @@
 "use strict"
 
-import { Joke } from '../features/jokeFeature';
+import { Joke } from '../features/jokeFeature.js';
 
 const jokeDiv = document.getElementById('jokeDiv') as HTMLElement;
 

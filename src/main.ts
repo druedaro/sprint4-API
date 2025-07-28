@@ -1,12 +1,12 @@
 "use strict"
 
-import { getWeather } from './features/weatherFeature';
-import { getRandomJoke, scoreJoke } from './features/jokeFeature';
-import { renderWeather } from './ui/weatherUI';
-import { renderJoke } from './ui/jokeUI';
-import { updateScoreUI, attachScoreListeners } from './ui/scoreUI';
-import { changeBackgroundShape } from './ui/shapeUI';
-import type { Joke } from './features/jokeFeature';
+import { getWeather } from './features/weatherFeature.js';
+import { getRandomJoke, scoreJoke } from './features/jokeFeature.js';
+import { renderWeather } from './ui/weatherUI.js';
+import { renderJoke } from './ui/jokeUI.js';
+import { updateScoreUI, attachScoreListeners } from './ui/scoreUI.js';
+import { changeBackgroundShape } from './ui/shapeUI.js';
+import type { Joke } from './features/jokeFeature.js';
 
 let currentJoke: Joke | null = null;
 

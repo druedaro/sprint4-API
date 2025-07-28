@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 import { getWeather } from './features/weatherFeature.js';
 import { getRandomJoke, scoreJoke } from './features/jokeFeature.js';
@@ -9,9 +9,7 @@ import { changeBackgroundShape } from './ui/shapeUI.js';
 import type { Joke } from './features/jokeFeature.js';
 
 let currentJoke: Joke | null = null;
-
 let currentScore: number | null = null;
-
 
 async function loadWeather() {
   try {
@@ -29,27 +27,34 @@ async function loadWeather() {
 async function loadNewJoke() {
   try {
     currentJoke = await getRandomJoke();
+    console.log('Joke loaded:', currentJoke);
     renderJoke(currentJoke);
-    currentScore = null;             
-    updateScoreUI();                 
-    changeBackgroundShape();         
+    currentScore = null;
+    updateScoreUI();
+    changeBackgroundShape();
   } catch (error) {
-    console.error('Error al obtener chiste:', error);
-    renderJoke({ id: 'error', joke: 'Error al cargar la broma. Inténtalo de nuevo.' });
+    console.error('Error loading joke:', error);
+    renderJoke({ id: 'error', joke: 'No se pudo cargar la broma.' });
   }
 }
 
-
 function setupEventListeners() {
-  const nextJokeBtn = document.getElementById('submit-button');
+  const nextJokeBtn = document.getElementById('submit-button') as HTMLButtonElement | null;
   if (nextJokeBtn) {
     nextJokeBtn.addEventListener('click', async () => {
+      console.log('Click Next Joke');
       if (currentJoke && currentScore !== null) {
         scoreJoke(currentJoke.joke, currentScore);
       }
-      nextJokeBtn.setAttribute('disabled', 'true');
-      await loadNewJoke();
-      nextJokeBtn.removeAttribute('disabled');
+      nextJokeBtn.disabled = true;
+      try {
+        await loadNewJoke();
+      } catch (e) {
+        console.error('Error loading joke:', e);
+        alert('Error cargando la broma, inténtalo de nuevo.');
+      } finally {
+        nextJokeBtn.disabled = false;
+      }
     });
   }
 
@@ -59,7 +64,6 @@ function setupEventListeners() {
   });
 }
 
-
 async function init() {
   await loadWeather();
   await loadNewJoke();
@@ -67,4 +71,3 @@ async function init() {
 }
 
 init();
-

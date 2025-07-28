@@ -35,14 +35,15 @@ function loadNewJoke() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             currentJoke = yield getRandomJoke();
+            console.log('Joke loaded:', currentJoke);
             renderJoke(currentJoke);
             currentScore = null;
             updateScoreUI();
             changeBackgroundShape();
         }
         catch (error) {
-            console.error('Error al obtener chiste:', error);
-            renderJoke({ id: 'error', joke: 'Error al cargar la broma. Inténtalo de nuevo.' });
+            console.error('Error loading joke:', error);
+            renderJoke({ id: 'error', joke: 'No se pudo cargar la broma.' });
         }
     });
 }
@@ -50,12 +51,21 @@ function setupEventListeners() {
     const nextJokeBtn = document.getElementById('submit-button');
     if (nextJokeBtn) {
         nextJokeBtn.addEventListener('click', () => __awaiter(this, void 0, void 0, function* () {
+            console.log('Click Next Joke');
             if (currentJoke && currentScore !== null) {
                 scoreJoke(currentJoke.joke, currentScore);
             }
-            nextJokeBtn.setAttribute('disabled', 'true');
-            yield loadNewJoke();
-            nextJokeBtn.removeAttribute('disabled');
+            nextJokeBtn.disabled = true;
+            try {
+                yield loadNewJoke();
+            }
+            catch (e) {
+                console.error('Error loading joke:', e);
+                alert('Error cargando la broma, inténtalo de nuevo.');
+            }
+            finally {
+                nextJokeBtn.disabled = false;
+            }
         }));
     }
     attachScoreListeners((score) => {

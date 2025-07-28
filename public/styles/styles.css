@@ -23,31 +23,31 @@
 }
 
 .custom-background.shape-1::before {
-    background-image: url('../assets/blob-backgrounds/blob-1.svg');
+    background-image: url('/assets/blob-backgrounds/blob-1.svg');
 }
 
 .custom-background.shape-2::before {
-    background-image: url('../assets/blob-backgrounds/blob-2.svg');
+    background-image: url('/assets/blob-backgrounds/blob-2.svg');
 }
 
 .custom-background.shape-3::before {
-    background-image: url('../assets/blob-backgrounds/blob-3.svg');
+    background-image: url('/assets/blob-backgrounds/blob-3.svg');
 }
 
 .custom-background.shape-4::before {
-    background-image: url('../assets/blob-backgrounds/blob-4.svg');
+    background-image: url('/assets/blob-backgrounds/blob-4.svg');
 }
 
 .custom-background.shape-5::before {
-    background-image: url('../assets/blob-backgrounds/blob-5.svg');
+    background-image: url('/assets/blob-backgrounds/blob-5.svg');
 }
 
 .custom-background.shape-6::before {
-    background-image: url('../assets/blob-backgrounds/blob-6.svg');
+    background-image: url('/assets/blob-backgrounds/blob-6.svg');
 }
 
 .custom-background.shape-7::before {
-    background-image: url('../assets/blob-backgrounds/blob-7.svg');
+    background-image: url('/assets/blob-backgrounds/blob-7.svg');
 }
 
 .btn-bad, .btn-good, .btn-very-good {
@@ -60,15 +60,15 @@
 }
 
 .btn-bad {
-    background-image: url('../assets/score-buttons/bad-face.svg');
+    background-image: url('/assets/score-buttons/bad-face.svg');
 }
 
 .btn-good {
-    background-image: url('../assets/score-buttons/ok-face.svg');
+    background-image: url('/assets/score-buttons/ok-face.svg');
 }
 
 .btn-very-good {
-    background-image: url('../assets/score-buttons/tears-face.svg');
+    background-image: url('/assets/score-buttons/tears-face.svg');
 }
 
 .btn-selected {

@@ -8,7 +8,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { apiClient } from '../api-service/apiClient.js';
 import { jokeEndpoints } from '../config/endpoints.js';
 export function getDadJoke() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -25,14 +24,13 @@ export function getDadJoke() {
 }
 export function getChuckNorrisJoke() {
     return __awaiter(this, void 0, void 0, function* () {
-        try {
-            const url = jokeEndpoints.chuckNorris;
-            return yield apiClient(url);
+        const url = jokeEndpoints.chuckNorris;
+        const response = yield fetch(url);
+        if (!response.ok) {
+            throw new Error('Error al obtener chiste Chuck Norris');
         }
-        catch (error) {
-            console.error('Error al obtener chiste Chuck Norris:', error);
-            return { id: 'error', joke: 'No se pudo cargar la broma, prueba otra vez.' };
-        }
+        const data = yield response.json();
+        return { id: data.id, joke: data.value };
     });
 }
 export function getRandomJoke() {

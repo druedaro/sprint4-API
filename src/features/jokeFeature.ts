@@ -21,13 +21,13 @@ export async function getDadJoke(): Promise<Joke> {
 }
 
 export async function getChuckNorrisJoke(): Promise<Joke> {
-  try {
-    const url = jokeEndpoints.chuckNorris;
-    return await apiClient<Joke>(url);
-  } catch (error) {
-    console.error('Error al obtener chiste Chuck Norris:', error);
-    return { id: 'error', joke: 'No se pudo cargar la broma, prueba otra vez.' };
+  const url = jokeEndpoints.chuckNorris;
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error('Error al obtener chiste Chuck Norris');
   }
+  const data = await response.json();
+  return { id: data.id, joke: data.value }; 
 }
 
 

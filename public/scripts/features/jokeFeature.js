@@ -8,8 +8,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { apiClient } from '../api-service/apiClient';
-import { jokeEndpoints } from '../config/endpoints';
+import { apiClient } from '../api-service/apiClient.js';
+import { jokeEndpoints } from '../config/endpoints.js';
 export function getDadJoke() {
     return __awaiter(this, void 0, void 0, function* () {
         const url = jokeEndpoints.dadJokes;

@@ -8,12 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { getWeather } from './features/weatherFeature';
-import { getRandomJoke, scoreJoke } from './features/jokeFeature';
-import { renderWeather } from './ui/weatherUI';
-import { renderJoke } from './ui/jokeUI';
-import { updateScoreUI, attachScoreListeners } from './ui/scoreUI';
-import { changeBackgroundShape } from './ui/shapeUI';
+import { getWeather } from './features/weatherFeature.js';
+import { getRandomJoke, scoreJoke } from './features/jokeFeature.js';
+import { renderWeather } from './ui/weatherUI.js';
+import { renderJoke } from './ui/jokeUI.js';
+import { updateScoreUI, attachScoreListeners } from './ui/scoreUI.js';
+import { changeBackgroundShape } from './ui/shapeUI.js';
 let currentJoke = null;
 let currentScore = null;
 function loadWeather() {

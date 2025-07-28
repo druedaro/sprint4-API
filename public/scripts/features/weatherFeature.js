@@ -8,8 +8,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { apiClient } from '../api-service/apiClient';
-import { weatherApiLocalEndpoint } from '../config/endpoints';
+import { apiClient } from '../api-service/apiClient.js';
+import { weatherApiLocalEndpoint } from '../config/endpoints.js';
 export function getWeather(lat, lon) {
     return __awaiter(this, void 0, void 0, function* () {
         const url = `${weatherApiLocalEndpoint}?lat=${lat}&lon=${lon}`;

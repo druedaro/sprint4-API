@@ -1,35 +1,35 @@
-"use strict"
+"use strict";
 
 import { apiClient } from '../api-service/apiClient.js';
 import { jokeEndpoints } from '../config/endpoints.js';
+import { JokeReport } from '../models/jokeReport.js';
 
 export interface Joke {
   id: string;
   joke: string;
 }
 
+const reportAcudits: JokeReport[] = [];
+
 export async function getDadJoke(): Promise<Joke> {
-  const url = jokeEndpoints.dadJokes;
-  const response = await fetch(url, {
-    headers: { Accept: 'application/json' },
+  const data = await apiClient<{id: string, joke: string}>(jokeEndpoints.dadJokes, {
+    headers: { Accept: 'application/json' }
   });
-  if (!response.ok) {
-    throw new Error('Error al obtener chiste dad joke');
-  }
-  const data = await response.json();
-  return { id: data.id, joke: data.joke };
+  
+  return { 
+    id: data.id, 
+    joke: data.joke 
+  };
 }
 
 export async function getChuckNorrisJoke(): Promise<Joke> {
-  const url = jokeEndpoints.chuckNorris;
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error('Error al obtener chiste Chuck Norris');
-  }
-  const data = await response.json();
-  return { id: data.id, joke: data.value }; 
+  const data = await apiClient<{id: string, value: string}>(jokeEndpoints.chuckNorris);
+  
+  return { 
+    id: data.id, 
+    joke: data.value 
+  };
 }
-
 
 export async function getRandomJoke(): Promise<Joke> {
   const random = Math.random();
@@ -40,11 +40,17 @@ export async function getRandomJoke(): Promise<Joke> {
   }
 }
 
-export function scoreJoke(joke: string, score: number) {
-  const report = {
+export function scoreJoke(joke: string, score: number): JokeReport[] {
+  const report: JokeReport = {
     joke,
     score,
     date: new Date().toISOString(),
   };
+  
+  reportAcudits.push(report);
   console.log('Nuevo registro en reportAcudits:', report);
+  console.log('Array completo reportAcudits:', reportAcudits);
+  
+  return [...reportAcudits]; 
 }
+

@@ -8,29 +8,27 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import { apiClient } from '../api-service/apiClient.js';
 import { jokeEndpoints } from '../config/endpoints.js';
+const reportAcudits = [];
 export function getDadJoke() {
     return __awaiter(this, void 0, void 0, function* () {
-        const url = jokeEndpoints.dadJokes;
-        const response = yield fetch(url, {
-            headers: { Accept: 'application/json' },
+        const data = yield apiClient(jokeEndpoints.dadJokes, {
+            headers: { Accept: 'application/json' }
         });
-        if (!response.ok) {
-            throw new Error('Error al obtener chiste dad joke');
-        }
-        const data = yield response.json();
-        return { id: data.id, joke: data.joke };
+        return {
+            id: data.id,
+            joke: data.joke
+        };
     });
 }
 export function getChuckNorrisJoke() {
     return __awaiter(this, void 0, void 0, function* () {
-        const url = jokeEndpoints.chuckNorris;
-        const response = yield fetch(url);
-        if (!response.ok) {
-            throw new Error('Error al obtener chiste Chuck Norris');
-        }
-        const data = yield response.json();
-        return { id: data.id, joke: data.value };
+        const data = yield apiClient(jokeEndpoints.chuckNorris);
+        return {
+            id: data.id,
+            joke: data.value
+        };
     });
 }
 export function getRandomJoke() {
@@ -50,5 +48,8 @@ export function scoreJoke(joke, score) {
         score,
         date: new Date().toISOString(),
     };
+    reportAcudits.push(report);
     console.log('Nuevo registro en reportAcudits:', report);
+    console.log('Array completo reportAcudits:', reportAcudits);
+    return [...reportAcudits];
 }
